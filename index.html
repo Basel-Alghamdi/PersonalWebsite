@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basel Alghamdi Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Purple spray effects -->
+  <div class="spray-effect-1"></div>
+  <div class="spray-effect-2"></div>
+  <div class="spray-effect-3"></div>
+  <div class="spray-effect-4"></div>
+  <div class="spray-effect-5"></div>
+  
+  <!-- Circular moving element -->
+  <div class="circular-element">
+    <svg width="60" height="60" viewBox="0 0 60 60">
+      <circle cx="30" cy="30" r="25" fill="none" stroke="url(#purpleGradient)" stroke-width="2" opacity="0.6"/>
+      <circle cx="30" cy="30" r="15" fill="url(#purpleGradient)" opacity="0.8"/>
+      <defs>
+        <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#7B2FF7;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#A677FF;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+  
+  <!-- Second circular moving element -->
+  <div class="circular-element-2">
+    <svg width="40" height="40" viewBox="0 0 40 40">
+      <circle cx="20" cy="20" r="18" fill="none" stroke="url(#purpleGradient2)" stroke-width="1.5" opacity="0.5"/>
+      <circle cx="20" cy="20" r="10" fill="url(#purpleGradient2)" opacity="0.7"/>
+      <defs>
+        <linearGradient id="purpleGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#A677FF;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#7B2FF7;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+  
+  <!-- Floating dots -->
+  <div class="floating-dot"></div>
+  <div class="floating-dot"></div>
+  <div class="floating-dot"></div>
+  <div class="floating-dot"></div>
+  <div class="floating-dot"></div>
+  <div class="floating-dot"></div>
+  <div class="floating-dot"></div>
+  <div class="floating-dot"></div>
+  
+  <!-- Header Section: Fixed at the top -->
+  <header class="site-header">
+    <div class="logo">
+      <!-- Replace the src below with your logo/profile image if needed -->
+      <img src="./assets/images/Screenshot 1447-01-20 at 2.09.29 PM.png" alt="Basel Alghamdi Logo" class="logo-image" />
+    </div>
+    <nav class="nav-menu" id="nav-menu">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#Experience" class="nav-link">Experience</a>
+      <a href="#contact" class="nav-link">Volunteering</a>
+    </nav>
+    <!-- Hamburger for mobile -->
+    <button class="hamburger" id="hamburger" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home" class="section home-section">
+    <div class="home-content">
+      <div class="home-left">
+        <h1>Basel Alghamdi</h1>
+        <h2>Software Engineer &amp; Associate Product Manager.</h2>
+      </div>
+      <div class="home-right">
+        <!-- Profile image placeholder. Replace the src below with your image URL. -->
+        <div class="profile-image-frame">
+          <img src="./assets/images/IMG_0378 2.jpg" alt="Profile" class="profile-image" id="profile-image" />
+        </div>
+        <!-- To replace the image: update the src attribute above with your image URL. -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2>About</h2>
+    <p>I'm a product person passionate about turning ideas into meaningful, user-centric solutions.
+    Recently, I've been building real products, learning fast, and growing even faster.
+    Still early in the journey, but already deep in the game.</p>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="Experience" class="section experience-section">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <!-- Timeline Entry 1 -->
+      <div class="timeline-entry" data-entry="1">
+        <!-- On mobile, dot and content are stacked and centered by CSS -->
+        <div class="timeline-dot">
+          <img src="./assets/images/Screenshot 1447-01-20 at 4.47.19 AM.png" alt="Rekaz" class="company-logo" />
+        </div>
+        <div class="timeline-content">
+          <h3 class="company-name">Rekaz</h3>
+          <p class="role-title">Product Intern <br> Jul 2024 - Oct 2024</p>
+        </div>
+      </div>
+      <!-- Timeline Entry 2 -->
+      <div class="timeline-entry" data-entry="2">
+        <!-- On mobile, dot and content are stacked and centered by CSS -->
+        <div class="timeline-dot">
+          <img src="./assets/images/Screenshot 1447-01-20 at 4.50.07 AM.png" alt="Nowaar" class="company-logo" />
+        </div>
+        <div class="timeline-content">
+          <h3 class="company-name">Nowaar</h3>
+          <p class="role-title">Associate Product Manager <br> Jan 2025 - May 2025</p>
+        </div>
+      </div>
+      <!-- Timeline Entry 3 -->
+      <div class="timeline-entry" data-entry="3">
+        <!-- On mobile, dot and content are stacked and centered by CSS -->
+        <div class="timeline-dot">
+          <img src="./assets/images/Screenshot 1447-01-20 at 4.51.12 AM.png" alt="Olo" class="company-logo" />
+        </div>
+        <div class="timeline-content">
+          <h3 class="company-name">Olo</h3>
+          <p class="role-title">Associate Product Manager <br> May 2025 - Present</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteering Section -->
+  <section id="Volunteering" class="section volunteering-section">
+    <h2>Volunteering</h2>
+    <!-- Volunteering Gallery -->
+    <div class="vol-gallery">
+      <div class="vol-gallery-tile" data-org="1" tabindex="0">
+        <img src="./assets/images/IMG_FDAA4363AB1E-1.jpeg" alt="Organization 1 Cover" />
+      </div>
+      <div class="vol-gallery-tile" data-org="2" tabindex="0">
+        <img src="./assets/images/IMG_C318F1D92210-1.jpeg" alt="Organization 2 Cover" />
+      </div>
+      <div class="vol-gallery-tile" data-org="3" tabindex="0">
+        <img src="./assets/images/IMG_8639 2.jpg" alt="Organization 3 Cover" />
+      </div>
+    </div>
+    <!-- Popup for Organization 1 -->
+    <div class="vol-modal-overlay" id="vol-modal-overlay-1" tabindex="-1" aria-hidden="true">
+      <div class="vol-modal" id="vol-modal-1" role="dialog" aria-modal="true">
+        <div class="popup-body">
+          <div class="popup-img-block">
+            <img src="./assets/images/Screenshot 1447-01-20 at 5.25.43 PM.png" alt="Org1 Image 1" class="popup-img" />
+            <div class="popup-img-caption">FTC Talks <br> An enriching talk with Engineer Sami Al-Husain at Mozn.</div>
+          </div>
+          <div class="popup-img-block">
+            <img src="./assets/images/Screenshot 1447-01-20 at 7.06.49 PM.png" alt="Org1 Image 2" class="popup-img" />
+            <div class="popup-img-caption">FTC Talks <br> An enriching session with Dr. Abdullah Elyas, Co-founder of Careem, hosted by VOV.</div>
+          </div>
+          <div class="popup-img-block">
+            <img src="./assets/images/Screenshot 1447-01-20 at 6.39.29 PM.png" alt="Org1 Image 3" class="popup-img" />
+            <div class="popup-img-caption">Eduthon x T2 <br> I worked as a team lead at Hackathon Eduthon in collaboration with T2 company.</div>
+          </div>
+          <div class="popup-img-block">
+            <img src="./assets/images/Screenshot 1447-01-20 at 7.04.56 PM.png" alt="Org1 Image 4" class="popup-img" />
+            <div class="popup-img-caption">Certificate of Working Hours <br> A certificate documenting the hours completed within the club.</div>
+          </div>
+          <div class="popup-img-block">
+            <img src="./assets/images/Screenshot 1447-01-20 at 9.21.59 PM.png" alt="Org1 Image 5" class="popup-img" />
+            <div class="popup-img-caption">Volunteer Certificate <br> A volunteer certificate for contributing to the organization of the Eduthon Hackathon.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Popup for Organization 2 -->
+    <div class="vol-modal-overlay" id="vol-modal-overlay-2" tabindex="-1" aria-hidden="true">
+      <div class="vol-modal" id="vol-modal-2" role="dialog" aria-modal="true">
+        <div class="popup-body">
+          <div class="popup-img-block">
+            <img src="./assets/images/Screenshot 1447-01-22 at 2.20.55 AM.png" alt="Org2 Image 1" class="popup-img" />
+            <div class="popup-img-caption">F&B hackathon x Jahez <br> I worked as an organizer in a food and beverage hackathon in cooperation with Jahez Company.</div>
+          </div>
+          <div class="popup-img-block">
+            <img src="./assets/images/Screenshot 1447-01-22 at 2.21.56 AM.png" alt="Org2 Image 2" class="popup-img" />
+            <div class="popup-img-caption">Certificate of Appreciation & Volunteer Hours <br> A certificate of appreciation acknowledging the volunteer hours contributed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Popup for Organization 3 -->
+    <div class="vol-modal-overlay" id="vol-modal-overlay-3" tabindex="-1" aria-hidden="true">
+      <div class="vol-modal" id="vol-modal-3" role="dialog" aria-modal="true">
+        <div class="popup-body">
+          <div class="popup-img-block">
+            <img src="./assets/images/Screenshot 1447-01-22 at 2.28.34 AM.png" alt="Org3 Image 1" class="popup-img" />
+            <div class="popup-img-caption">Panel Talk x Monsha’at <br> A panel discussion with Engineer Rayan Labbad at the Monsha’at headquarters.</div>
+          </div>
+          <div class="popup-img-block">
+            <img src="./assets/images/Screenshot 1447-01-22 at 2.25.48 AM.png" alt="Org3 Image 2" class="popup-img" />
+            <div class="popup-img-caption">Certificate of Appreciation <br> A certificate of appreciation for delivering a talk at the Innovation Unit in collaboration with Monsha’at Center.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Volunteering Gallery & Modal -->
+  </section>
+
+<footer class="footer-bar" id="contact">
+  <div class="footer-left">
+    <img src="./assets/images/Screenshot 1447-01-20 at 2.09.29 PM.png" alt="Logo" class="footer-logo" />
+    <span class="footer-name">Basel Alghamdi</span>
+  </div>
+  <div class="footer-right">
+    <a href="https://x.com/baseelaziz1" class="footer-icon" aria-label="X (Twitter)" target="_blank" rel="noopener">
+      <svg width="26" height="26" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M93.6 10H110L76.8 54.1L115 110H81.2L58.2 77.7L31.8 110H15L50.2 63.6L13 10h34.2l20.2 28.2L93.6 10ZM87.2 101.2h9.2L41.6 19h-9.8l55.4 82.2Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <a href="https://www.linkedin.com/in/basel-alghamdi1" class="footer-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/></svg></a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html> 
