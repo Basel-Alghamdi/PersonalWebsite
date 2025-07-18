@@ -1584,8 +1584,8 @@ html, body {
   left: 50% !important;
   transform: translate(-50%, -50%) scale(0.9) !important;
   width: 480px;
-  min-height: 750px;
-  max-height: 850px;
+  min-height: 620px;
+  max-height: 720px;
   max-width: 90vw;
   background: #fff;
   border: none;
@@ -1625,7 +1625,7 @@ html, body {
 /* --- header image with rounded corners --- */
 .vol-modal-img {
   width: 100%;
-  height: 450px;
+  height: 380px;
   margin: 0;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
@@ -1655,8 +1655,8 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
   width: 480px;
-  min-height: 750px;
-  max-height: 850px;
+  min-height: 620px;
+  max-height: 720px;
   max-width: 90vw;
   background: #fff;
   border: none;
