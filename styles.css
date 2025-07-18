@@ -534,7 +534,7 @@ html, body {
   text-align: center;
   background: transparent;
   border-radius: 22px;
-  padding: 2rem 3.5rem 3.5rem 3.5rem;
+  padding: 1.2rem 3.5rem 3.5rem 3.5rem;
   max-width: 920px;
   margin: 2rem auto 0 auto;
   transition: box-shadow 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1);
@@ -581,7 +581,7 @@ html, body {
 }
 @media (max-width: 900px) {
   #about {
-    padding: 1rem 1rem 1.8rem 1rem;
+    padding: 0.6rem 1rem 1.8rem 1rem;
     max-width: 98vw;
   }
   #about p {
@@ -593,7 +593,7 @@ html, body {
   #about {
     max-width: 88vw;
     margin: 2.2rem auto 0 auto;
-    padding: 0.8rem 0.3rem 1.2rem 0.3rem;
+    padding: 0.5rem 0.3rem 1.2rem 0.3rem;
     border-radius: 12px;
     box-shadow: 0 1px 6px rgba(123,47,247,0.07);
     text-align: center;
@@ -1577,17 +1577,16 @@ html, body {
   align-items: center;
 }
 
-/* --- Modern, elegant popup design --- */
+/* --- Modern, elegant popup design with fixed dimensions --- */
 .vol-modal {
   position: fixed;
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) scale(0.9) !important;
-  width: 420px;
+  width: 480px;
+  min-height: 500px;
+  max-height: 600px;
   max-width: 90vw;
-  min-height: 320px;
-  max-height: 75vh;
-  height: auto;
   background: #fff;
   border: none;
   border-radius: 24px;
@@ -1605,6 +1604,14 @@ html, body {
   transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
   margin: auto;
+  /* Hide scrollbar for all browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.vol-modal::-webkit-scrollbar {
+  display: none;
 }
 
 .vol-modal-overlay.open .vol-modal {
@@ -1618,9 +1625,7 @@ html, body {
 /* --- header image with rounded corners --- */
 .vol-modal-img {
   width: 100%;
-  max-width: 420px;
-  max-height: 160px;
-  min-height: 100px;
+  height: 200px;
   margin: 0;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
@@ -1631,7 +1636,6 @@ html, body {
 /* --- popup content container --- */
 .vol-modal-content {
   width: 100%;
-  max-width: 420px;
   margin: 0;
   padding: 1.5rem;
   display: flex;
@@ -1643,17 +1647,16 @@ html, body {
   background: #fff;
 }
 
-/* --- scrollable blog-style popup --- */
+/* --- scrollable blog-style popup with fixed dimensions --- */
 .vol-modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
-  width: 420px;
+  width: 480px;
+  min-height: 500px;
+  max-height: 600px;
   max-width: 90vw;
-  min-height: 320px;
-  max-height: 75vh;
-  height: auto;
   background: #fff;
   border: none;
   border-radius: 24px;
@@ -1674,7 +1677,7 @@ html, body {
 /* --- scrollable blog body --- */
 .popup-body {
   width: 100%;
-  max-width: 420px;
+  flex: 1;
   margin: 0;
   padding: 1.5rem;
   display: flex;
@@ -1684,6 +1687,14 @@ html, body {
   box-sizing: border-box;
   overflow-y: auto;
   background: #fff;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.popup-body::-webkit-scrollbar {
+  display: none;
 }
 
 .popup-img-block {
@@ -1697,8 +1708,7 @@ html, body {
 /* --- image with rounded corners --- */
 .popup-img {
   width: 100%;
-  max-width: 420px;
-  max-height: 160px;
+  height: 140px;
   margin: 0 auto 1rem auto;
   object-fit: cover;
   border-radius: 16px;
@@ -1721,21 +1731,19 @@ html, body {
 @media (max-width: 767px) {
   .vol-modal {
     width: 92vw;
-    min-width: 0;
+    min-height: 400px;
+    max-height: 500px;
     max-width: 92vw;
-    min-height: 280px;
-    max-height: 80vh;
     border-radius: 20px;
     padding: 0;
   }
   .popup-body {
-    max-width: 92vw;
+    flex: 1;
     padding: 1.2rem;
     gap: 1.5rem;
   }
   .popup-img {
-    max-width: 92vw;
-    max-height: 140px;
+    height: 120px;
     margin-bottom: 0.8rem;
     border-radius: 12px;
   }
@@ -1745,8 +1753,7 @@ html, body {
     line-height: 1.5;
   }
   .vol-modal-img {
-    max-height: 140px;
-    min-height: 80px;
+    height: 150px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
