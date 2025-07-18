@@ -57,20 +57,22 @@
   
   <!-- Header Section: Fixed at the top -->
   <header class="site-header">
+    <div class="header-container">
     <div class="logo">
-      <!-- Replace the src below with your logo/profile image if needed -->
       <img src="./assets/images/Screenshot 1447-01-20 at 2.09.29 PM.png" alt="Basel Alghamdi Logo" class="logo-image" />
     </div>
+      <div class="flex-spacer"></div>
     <nav class="nav-menu" id="nav-menu">
-      <a href="#home" class="nav-link active">Home</a>
+        <a href="#home" class="nav-link">Home</a>
       <a href="#about" class="nav-link">About</a>
       <a href="#Experience" class="nav-link">Experience</a>
-      <a href="#contact" class="nav-link">Volunteering</a>
+        <a href="#Volunteering" class="nav-link">Volunteering</a>
     </nav>
-    <!-- Hamburger for mobile -->
+      <div class="flex-spacer"></div>
     <button class="hamburger" id="hamburger" aria-label="Open navigation">
       <span></span><span></span><span></span>
     </button>
+    </div>
   </header>
 
   <!-- Home Section -->
@@ -92,10 +94,12 @@
 
   <!-- About Section -->
   <section id="about" class="section">
+    <div class="about-card">
     <h2>About</h2>
     <p>I'm a product person passionate about turning ideas into meaningful, user-centric solutions.
     Recently, I've been building real products, learning fast, and growing even faster.
     Still early in the journey, but already deep in the game.</p>
+    </div>
   </section>
 
   <!-- Experience Section -->
@@ -140,6 +144,7 @@
 
   <!-- Volunteering Section -->
   <section id="Volunteering" class="section volunteering-section">
+    <div id="volunteering-anchor"></div>
     <h2>Volunteering</h2>
     <!-- Volunteering Gallery -->
     <div class="vol-gallery">
@@ -185,7 +190,7 @@
       <div class="vol-modal" id="vol-modal-2" role="dialog" aria-modal="true">
         <div class="popup-body">
           <div class="popup-img-block">
-            <img src="./assets/images/Screenshot 1447-01-22 at 2.20.55 AM.png" alt="Org2 Image 1" class="popup-img" />
+            <img src="./assets/images/Screenshot 1447-01-24 at 1.24.18 AM.png" alt="Org2 Image 1" class="popup-img" />
             <div class="popup-img-caption">F&B hackathon x Jahez <br> I worked as an organizer in a food and beverage hackathon in cooperation with Jahez Company.</div>
           </div>
           <div class="popup-img-block">
@@ -201,11 +206,11 @@
         <div class="popup-body">
           <div class="popup-img-block">
             <img src="./assets/images/Screenshot 1447-01-22 at 2.28.34 AM.png" alt="Org3 Image 1" class="popup-img" />
-            <div class="popup-img-caption">Panel Talk x Monsha’at <br> A panel discussion with Engineer Rayan Labbad at the Monsha’at headquarters.</div>
+            <div class="popup-img-caption">Panel Talk x Monsha'at <br> A panel discussion with Engineer Rayan Labbad at the Monsha'at headquarters.</div>
           </div>
           <div class="popup-img-block">
             <img src="./assets/images/Screenshot 1447-01-22 at 2.25.48 AM.png" alt="Org3 Image 2" class="popup-img" />
-            <div class="popup-img-caption">Certificate of Appreciation <br> A certificate of appreciation for delivering a talk at the Innovation Unit in collaboration with Monsha’at Center.</div>
+            <div class="popup-img-caption">Certificate of Appreciation <br> A certificate of appreciation for delivering a talk at the Innovation Unit in collaboration with Monsha'at Center.</div>
           </div>
         </div>
       </div>
@@ -220,8 +225,9 @@
   </div>
   <div class="footer-right">
     <a href="mailto:baseelaziz1@gmail.com" class="footer-icon" aria-label="Email" target="_blank" rel="noopener">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2.25 6.75v10.5A2.25 2.25 0 0 0 4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75m-19.5 0A2.25 2.25 0 0 1 4.5 4.5h15a2.25 2.25 0 0 1 2.25 2.25m-19.5 0v.243a2.25 2.25 0 0 0 1.07 1.916l7.5 4.615a2.25 2.25 0 0 0 2.36 0l7.5-4.615a2.25 2.25 0 0 0 1.07-1.916V6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 6.75A2.25 2.25 0 0 1 5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75v10.5A2.25 2.25 0 0 1 18.75 19.5H5.25A2.25 2.25 0 0 1 3 17.25V6.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M3.75 7.5 12 13.5l8.25-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </a>
     <a href="https://x.com/baseelaziz1" class="footer-icon" aria-label="X (Twitter)" target="_blank" rel="noopener">
@@ -233,6 +239,247 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+// COMPLETE WEBSITE FUNCTIONALITY
+document.addEventListener('DOMContentLoaded', function() {
+  // === HEADER FUNCTIONALITY ===
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.onclick = function() {
+      navMenu.classList.toggle('open');
+      document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
+    };
+    // أغلق القائمة عند الضغط على أي رابط
+    navMenu.querySelectorAll('.nav-link').forEach(link => {
+      link.onclick = function() {
+        navMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      };
+    });
+  }
+  
+    // Navigation links - حل بسيط ومضمون
+  const links = document.querySelectorAll('.nav-link');
+  links.forEach(function(link) {
+    link.onclick = function(e) {
+      e.preventDefault();
+      const target = this.getAttribute('href').substring(1);
+      const section = document.getElementById(target);
+      
+      if (section) {
+        // حل بسيط ومضمون: استخدم scrollIntoView مع block: center
+        section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      
+      document.getElementById('nav-menu').classList.remove('open');
+    };
+  });
+  
+  // === TIMELINE ANIMATIONS (Experience Images) ===
+  const timelineEntries = document.querySelectorAll('.timeline-entry');
+  timelineEntries.forEach(function(entry) {
+    entry.style.opacity = '0';
+    entry.style.transform = 'translateY(30px)';
+    entry.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  });
+  
+  const timelineObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.3 });
+  
+  timelineEntries.forEach(function(entry) {
+    timelineObserver.observe(entry);
+  });
+  
+  // === VOLUNTEERING POPUPS ===
+  const tiles = document.querySelectorAll('.vol-gallery-tile');
+  console.log('Found tiles:', tiles.length);
+  
+  tiles.forEach(function(tile) {
+    tile.onclick = function() {
+      const orgId = this.getAttribute('data-org');
+      console.log('Tile clicked:', orgId);
+      
+      // Find and show modal
+      const modal = document.getElementById('vol-modal-overlay-' + orgId);
+      console.log('Modal found:', !!modal);
+      
+      if (modal) {
+        console.log('Showing modal...');
+        // Force modal to appear on top with full visibility
+        modal.style.cssText = `
+          display: flex !important;
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          width: 100% !important;
+          height: 100% !important;
+          z-index: 99999 !important;
+          justify-content: center !important;
+          align-items: center !important;
+          pointer-events: auto !important;
+          opacity: 1 !important;
+          visibility: visible !important;
+        `;
+        document.body.style.overflow = 'hidden';
+        
+        // Also ensure the modal content is visible
+        const modalContent = modal.querySelector('.vol-modal');
+        if (modalContent) {
+          modalContent.style.cssText = `
+            z-index: 100000 !important;
+            position: fixed !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+          `;
+        }
+        
+        console.log('Modal should be visible now');
+      } else {
+        console.log('Modal not found for orgId:', orgId);
+      }
+    };
+  });
+  
+  // Close modals
+  const overlays = document.querySelectorAll('.vol-modal-overlay');
+  console.log('Found overlays:', overlays.length);
+  
+  overlays.forEach(function(overlay) {
+    overlay.onclick = function(e) {
+      if (e.target === this) {
+        console.log('Closing modal');
+        this.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    };
+  });
+  
+  // Escape key
+  document.onkeydown = function(e) {
+    if (e.key === 'Escape') {
+      console.log('Escape pressed');
+      overlays.forEach(function(overlay) {
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      });
+    }
+  };
+  
+  // === PROFILE IMAGE ANIMATION ===
+  const profileImage = document.getElementById('profile-image');
+  if (profileImage && window.innerWidth > 768) {
+    let targetX = 0;
+    let currentX = 0;
+    const maxShift = 10;
+    const speed = 0.10;
+    
+    function animateProfileImage() {
+      currentX += (targetX - currentX) * speed;
+      profileImage.style.transform = `translateX(${currentX}px)`;
+      requestAnimationFrame(animateProfileImage);
+    }
+    
+    function handleMouseMove(e) {
+      const vw = window.innerWidth;
+      const mouseX = e.clientX;
+      targetX = ((mouseX / vw) - 0.5) * 2 * maxShift;
+    }
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    animateProfileImage();
+  }
+  
+});
+
+/*
+// كود scroll-spy القديم:
+// إعداد المراقب
+const observerOptions = {
+  root: null,
+  rootMargin: '-30% 0px -60% 0px', // يجعل التفعيل عند دخول القسم أعلى الثلث العلوي من الشاشة
+  threshold: 0
+};
+
+function setActive(id) {
+  navLinksHeader.forEach(link => {
+    const href = link.getAttribute('href').replace('#', '').toLowerCase().trim();
+    if (id && id.toLowerCase().trim() === href) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+}
+
+const observer = new window.IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setActive(entry.target.id);
+    }
+  });
+}, observerOptions);
+
+headerSections.forEach(section => observer.observe(section));
+*/
+
+// كود IntersectionObserver الجديد:
+(function() {
+  "use strict";
+  const headerNav = document.querySelector('.nav-menu');
+  if (!headerNav) return;
+  const navLinksHeader = Array.from(headerNav.querySelectorAll('.nav-link'));
+  const headerSectionIds = navLinksHeader.map(link => link.getAttribute('href').replace('#', ''));
+  const headerSections = headerSectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  // إعداد المراقب
+  const observerOptions = {
+    root: null,
+    rootMargin: '-30% 0px -60% 0px', // يجعل التفعيل عند دخول القسم أعلى الثلث العلوي من الشاشة
+    threshold: 0
+  };
+
+  function setActive(id) {
+    navLinksHeader.forEach(link => {
+      const href = link.getAttribute('href').replace('#', '').toLowerCase().trim();
+      if (id && id.toLowerCase().trim() === href) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  const observer = new window.IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setActive(entry.target.id);
+      }
+    });
+  }, observerOptions);
+
+  headerSections.forEach(section => observer.observe(section));
+
+  navLinksHeader.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      const target = document.getElementById(href.replace('#', ''));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html> 
