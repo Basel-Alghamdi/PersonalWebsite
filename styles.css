@@ -336,23 +336,31 @@ html, body {
 }
 
 .hamburger {
-  display: none !important;
+  display: none; /* visible on mobile via media query */
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; /* stack bars vertically */
+  gap: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--nav-active);
+  border-radius: 2px;
+  transition: transform .2s ease, opacity .2s ease, background .2s ease;
 }
 
 /* Compact desktop-like header on mobile (no hamburger) */
 @media (max-width: 900px) {
-  .hamburger { display: none !important; }
-  .nav-menu {
-    display: flex !important;
-    position: static !important;
-    flex-direction: row !important;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 0;
-    background: transparent !important;
-    box-shadow: none !important;
-  }
+  .hamburger { display: inline-flex !important; }
+  .nav-menu { display: none !important; }
   .nav-link {
     width: auto;
     max-width: none;
@@ -402,15 +410,85 @@ html, body {
     height: 36px;
     margin-right: 0.35rem;
   }
-  .nav-menu {
-    gap: 0.5rem;
-    padding-top: 0.8rem;
-  }
+  .nav-menu { display: none !important; }
   .nav-link {
     font-size: 0.85rem !important;
     padding: 0.3rem 0.4rem;
     border-radius: 10px;
   }
+}
+
+/* Custom mobile nav overlay + menu */
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: none;
+  align-items: flex-start; /* move content to top */
+  justify-content: center; /* center horizontally */
+  padding-top: calc(var(--header-height) + 1rem); /* show near top below header */
+  padding-left: 0;
+  padding-right: 0;
+  background: rgba(40, 24, 80, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.mobile-nav-overlay.open {
+  display: block; /* simpler, no flex/grid side-effects */
+  opacity: 1;
+}
+.mobile-nav-panel {
+  position: fixed;
+  top: calc(var(--header-height) + 1rem);
+  left: 45%; /* nudge slightly more left */
+  transform: translate(-50%, 6px);
+  width: min(92vw, 760px); /* slightly smaller */
+  max-width: 760px;
+  background: transparent; /* remove white rectangle */
+  box-shadow: none; /* remove white panel shadow */
+  border-radius: 0; /* no panel corners */
+  padding: 0 14px 1rem 14px; /* symmetric inner padding */
+  transition: transform .25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+.mobile-nav-overlay.open .mobile-nav-panel { transform: translate(-50%, 0); }
+.mobile-nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: 100%;
+  margin: 0;
+}
+.mobile-nav-item {
+  display: block;
+  text-decoration: none;
+  color: var(--nav-active) !important;
+  /* Elegant glass pill with gradient border */
+  background: linear-gradient(white, white) padding-box, var(--accent-gradient) border-box;
+  border: 2.5px solid transparent;
+  border-radius: 999px;
+  padding: 0.95rem 1.1rem; /* slightly smaller */
+  font-size: 1.06rem !important;
+  font-weight: 600 !important;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(123,47,247,0.12);
+  width: 100%;
+  backdrop-filter: saturate(120%) blur(2px);
+  -webkit-backdrop-filter: saturate(120%) blur(2px);
+}
+.mobile-nav-item:focus,
+.mobile-nav-item:hover {
+  box-shadow: 0 10px 26px rgba(123,47,247,0.2);
+  transform: translateY(-1px);
+}
+
+@media (min-width: 901px) {
+  .mobile-nav-overlay { display: none !important; }
 }
 
 /* Main Content Spacing */
@@ -2282,3 +2360,5 @@ html, body {
   height: 150px;
   width: 100%;
 } 
+/* Shoelace drawer theming to match site */
+/* (Removed Shoelace drawer styles; using custom overlay now) */

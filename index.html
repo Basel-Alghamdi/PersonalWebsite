@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <!-- Shoelace for robust mobile drawer (burger menu) -->
+  
 </head>
 <body>
   <!-- Purple spray effects -->
@@ -74,6 +76,18 @@
     </button>
     </div>
   </header>
+  
+  <!-- Custom Mobile Nav Overlay -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true" tabindex="-1">
+    <div class="mobile-nav-panel" role="dialog" aria-modal="true" aria-label="Navigation">
+      <nav class="mobile-nav-menu">
+        <a href="#home" class="mobile-nav-item nav-link">Home</a>
+        <a href="#about" class="mobile-nav-item nav-link">About</a>
+        <a href="#Experience" class="mobile-nav-item nav-link">Experience</a>
+        <a href="#Volunteering" class="mobile-nav-item nav-link">Volunteering</a>
+      </nav>
+    </div>
+  </div>
 
   <!-- Home Section -->
   <section id="home" class="section home-section">
@@ -235,8 +249,32 @@ document.addEventListener('DOMContentLoaded', function() {
   // === HEADER FUNCTIONALITY ===
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('nav-menu');
-  // الهيدر على الجوال مماثل لسطح المكتب (لا يوجد برجر)
-  if (hamburger) { hamburger.style.display = 'none'; }
+  const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+  const openMobileNav = () => {
+    if (!mobileNavOverlay) return;
+    mobileNavOverlay.classList.add('open');
+    mobileNavOverlay.setAttribute('aria-hidden', 'false');
+    // lock scroll
+    document.body.style.overflow = 'hidden';
+  };
+  const closeMobileNav = () => {
+    if (!mobileNavOverlay) return;
+    mobileNavOverlay.classList.remove('open');
+    mobileNavOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+  if (hamburger && mobileNavOverlay) {
+    hamburger.addEventListener('click', openMobileNav);
+    // Close when clicking outside the panel
+    mobileNavOverlay.addEventListener('click', function(e) {
+      if (e.target === mobileNavOverlay) closeMobileNav();
+    });
+    // Close when clicking a link
+    const mobileNavLinks = mobileNavOverlay.querySelectorAll('.nav-link');
+    mobileNavLinks.forEach(function(link) {
+      link.addEventListener('click', closeMobileNav);
+    });
+  }
   
     // Navigation links - حل بسيط ومضمون
   const links = document.querySelectorAll('.nav-link');
@@ -324,6 +362,10 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.classList.remove('open');
         document.body.style.overflow = 'auto';
       });
+      // Close mobile nav if open
+      if (mobileNavOverlay && mobileNavOverlay.classList.contains('open')) {
+        closeMobileNav();
+      }
       // Close nav menu if open
       if (navMenu && navMenu.classList.contains('open')) {
         navMenu.classList.remove('open');
