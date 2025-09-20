@@ -674,6 +674,11 @@ html, body {
   font-family: 'Winky_Rough', 'Segoe UI', Arial, sans-serif;
 }
 
+/* Slightly larger About title */
+#about h2 {
+  font-size: 2.15rem !important;
+}
+
 /* About Section Improvements */
 #about {
   position: relative;
@@ -752,7 +757,7 @@ html, body {
     box-shadow: 0 1px 6px rgba(123,47,247,0.07);
   }
   #about h2 {
-    font-size: 1rem !important;
+    font-size: 1.12rem !important;
     margin-bottom: 0.6rem;
   }
   #about p {
