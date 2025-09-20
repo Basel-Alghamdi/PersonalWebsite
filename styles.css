@@ -578,9 +578,43 @@ html, body {
 .role-rotator {
   display: inline-block;
   transition: opacity .25s ease, transform .25s ease;
+  position: relative;
+  overflow: hidden; /* clip the shine sweep */
 }
 .role-rotator.fade-out { opacity: 0; transform: translateY(6px); }
 .role-rotator.fade-in  { opacity: 1; transform: translateY(0); }
+
+/* Subtle shine sweep across the text each cycle (previous layout) */
+.role-rotator::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -200%;
+  width: 80%; /* wide sweep to fully cover long titles */
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0) 40%,
+    rgba(255,255,255,0.9) 50%,
+    rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: skewX(-20deg) translateX(0);
+  opacity: 0.75;
+  mix-blend-mode: screen;
+  animation: roleShine 2.6s linear infinite;
+}
+@keyframes roleShine {
+  0% { transform: skewX(-20deg) translateX(0); opacity: 0.0; }
+  10% { opacity: 0.75; }
+  85% { transform: skewX(-20deg) translateX(600%); opacity: 0.75; }
+  100% { transform: skewX(-20deg) translateX(600%); opacity: 0.0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .role-rotator::after { animation: none !important; opacity: 0 !important; }
+}
 
 /* Scale hero headings on small screens */
 @media (max-width: 700px) {
