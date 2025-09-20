@@ -118,8 +118,7 @@ body {
 
 /* Trim decorative animations on small screens for clarity and performance */
 @media (max-width: 600px) {
-  .circular-element,
-  .circular-element-2,
+  /* Keep circles visible on mobile, hide only extra dots */
   .floating-dot { display: none !important; }
 }
 
