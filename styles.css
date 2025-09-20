@@ -364,20 +364,21 @@ html, body {
   appearance: none;
   background: transparent;
   border: 0;
-  padding: 8px;
+  padding: 10px; /* larger tap target */
   margin-left: 0.5rem;
   cursor: pointer;
   align-items: center;
   justify-content: center;
   flex-direction: column; /* stack bars vertically */
-  gap: 4px;
+  gap: 5px;
 }
 .hamburger span {
   display: block;
-  width: 26px;
-  height: 2px;
-  background: var(--nav-active);
-  border-radius: 2px;
+  width: 30px; /* wider */
+  height: 3px; /* thicker for boldness */
+  background: var(--accent-gradient); /* match logo accent */
+  border-radius: 3px;
+  box-shadow: 0 1px 4px rgba(123,47,247,0.25);
   transition: transform .2s ease, opacity .2s ease, background .2s ease;
 }
 
