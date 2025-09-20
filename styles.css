@@ -376,9 +376,9 @@ html, body {
     font-size: 1.1rem !important;
   }
   .logo-image {
-    width: 32px;
-    height: 32px;
-    margin-right: 0.4rem;
+    width: 44px;
+    height: 44px;
+    margin-right: 0.5rem;
   }
   .nav-menu {
     gap: 1.1rem;
@@ -398,9 +398,9 @@ html, body {
     margin-right: 0.5rem;
   }
   .logo-image {
-    width: 24px;
-    height: 24px;
-    margin-right: 0.2rem;
+    width: 36px;
+    height: 36px;
+    margin-right: 0.35rem;
   }
   .nav-menu {
     gap: 0.5rem;
@@ -1547,7 +1547,18 @@ html, body {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
-} 
+  
+  /* Keep the badge visible on mobile to signal tap */
+  .vol-gallery-tile::after {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 0.8rem;
+    right: 8px;
+    bottom: 8px;
+    padding: 5px 9px;
+    border-radius: 999px;
+  }
+}
 
 /* Volunteering Gallery Layout */
 .vol-gallery {
@@ -1592,6 +1603,31 @@ html, body {
 .vol-gallery-tile > * {
   position: relative;
   z-index: 102;
+}
+
+/* Click affordance badge for tiles */
+.vol-gallery-tile::after {
+  content: 'View →';
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent-gradient);
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(123,47,247,0.25);
+  z-index: 103;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.vol-gallery-tile:hover::after,
+.vol-gallery-tile:focus::after {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Hover effect for gallery tile */

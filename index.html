@@ -299,6 +299,18 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'hidden';
       }
     };
+    // Keyboard support for accessibility (Enter/Space to open)
+    tile.onkeydown = function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const orgId = this.getAttribute('data-org');
+        const modal = document.getElementById('vol-modal-overlay-' + orgId);
+        if (modal) {
+          modal.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+    };
   });
   
   // Close modals
