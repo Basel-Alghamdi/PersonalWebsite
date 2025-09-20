@@ -1082,6 +1082,8 @@ html, body {
     margin: 0.2rem 0;
     color: var(--nav-active);
   }
+  /* Ensure company name stays bold on mobile */
+  .company-name { font-weight: 700 !important; }
 }
 
 @media (max-width: 480px) {
