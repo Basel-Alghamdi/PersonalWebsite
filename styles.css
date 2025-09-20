@@ -574,6 +574,14 @@ html, body {
   font-family: 'Winky_Rough', 'Segoe UI', Arial, sans-serif;
 }
 
+/* Rotating role text animation */
+.role-rotator {
+  display: inline-block;
+  transition: opacity .25s ease, transform .25s ease;
+}
+.role-rotator.fade-out { opacity: 0; transform: translateY(6px); }
+.role-rotator.fade-in  { opacity: 1; transform: translateY(0); }
+
 /* Scale hero headings on small screens */
 @media (max-width: 700px) {
   .home-left h1 { font-size: 1.5rem !important; line-height: 1.25; }

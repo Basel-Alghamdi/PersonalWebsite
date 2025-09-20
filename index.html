@@ -94,7 +94,7 @@
     <div class="home-content">
       <div class="home-left">
         <h1>Basel Alghamdi</h1>
-        <h2>Software Engineer &amp; Associate Product Manager.</h2>
+        <h2><span id="role-rotator" class="role-rotator" aria-live="polite">Software Engineer.</span></h2>
       </div>
       <div class="home-right">
         <!-- Profile image placeholder. Replace the src below with your image URL. -->
@@ -408,6 +408,29 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('mousemove', handleMouseMove);
     animateProfileImage();
   }
+  
+  // === HOME ROLE ROTATOR ===
+  (function() {
+    const roleEl = document.getElementById('role-rotator');
+    if (!roleEl) return;
+    const roles = [
+      'Software Engineer.',
+      'Associate Product Manager.'
+    ];
+    let i = 0;
+    function switchRole() {
+      const next = (i + 1) % roles.length;
+      roleEl.classList.add('fade-out');
+      setTimeout(() => {
+        roleEl.textContent = roles[next];
+        roleEl.classList.remove('fade-out');
+        roleEl.classList.add('fade-in');
+        setTimeout(() => roleEl.classList.remove('fade-in'), 260);
+        i = next;
+      }, 220);
+    }
+    setInterval(switchRole, 2600);
+  })();
   
 });
 
