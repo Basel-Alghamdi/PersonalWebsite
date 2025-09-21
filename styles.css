@@ -76,6 +76,13 @@ body {
   flex-direction: column;
 }
 
+/* Defer rendering of offscreen sections for faster first paint */
+/* Use content-visibility for sections except those hosting overlays */
+.section:not(.volunteering-section) {
+  content-visibility: auto;
+  contain-intrinsic-block-size: 600px;
+}
+
 /* Subtle noise overlay to enhance glass depth */
 body::before {
   content: '';
@@ -180,6 +187,14 @@ body::before {
 .circular-element svg {
   filter: drop-shadow(0 0 10px rgba(123, 47, 247, 0.3));
   animation: rotate 8s linear infinite;
+}
+
+/* Disable heavy decorative animations on small screens */
+@media (max-width: 700px) {
+  .circular-element,
+  .circular-element-2 {
+    display: none !important;
+  }
 }
 
 /* Circular motion animation */
@@ -425,6 +440,9 @@ html, body {
 @media (max-width: 600px) {
   .site-header {
     padding: 0 0.2rem;
+    /* Remove blur on low-power devices */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
   .logo {
     font-size: 0.95rem !important;
@@ -525,6 +543,15 @@ html, body {
 
 @media (min-width: 901px) {
   .mobile-nav-overlay { display: none !important; }
+}
+
+/* Tone down overlay blur on small screens for smoother open */
+@media (max-width: 900px) {
+  .mobile-nav-overlay {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(40, 24, 80, 0.45);
+  }
 }
 
 /* Reusable glass utilities */
@@ -1135,6 +1162,8 @@ html, body {
     width: 80px;
     height: 80px;
     border-width: 5px;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     z-index: 2;
     margin: 0 0.6rem 0 0;
     flex-shrink: 0;
@@ -1841,7 +1870,7 @@ html, body {
 .vol-modal-overlay {
   display: none;
   position: fixed;
-  z-index: 2000;
+  z-index: 9999; /* ensure above all site chrome */
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(40, 24, 80, 0.35);
   backdrop-filter: blur(8px);
@@ -2026,6 +2055,8 @@ html, body {
     border-radius: 14px;
     padding: 0;
     margin: 0;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
   .popup-body {
     flex: 1;
@@ -2232,6 +2263,8 @@ html, body {
     margin: 0;
     box-shadow: 0 -2px 12px rgba(123,47,247,0.08);
     background: var(--bg-main);
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
   .footer-left {
     justify-content: flex-start !important;
@@ -2282,6 +2315,9 @@ html, body {
   position: relative;
   z-index: 1;
 }
+
+/* Smooth momentum scrolling inside modal on iOS */
+.popup-body { -webkit-overflow-scrolling: touch; }
 
 .popup-img-caption {
   font-size: 0.9rem !important;
