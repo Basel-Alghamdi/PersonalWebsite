@@ -4,6 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Basel Alghamdi Portfolio</title>
+  <meta name="color-scheme" content="light dark" />
+  <script>
+    (function(){
+      try {
+        var key='theme';
+        var saved=localStorage.getItem(key);
+        var prefers = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved==='dark' || (!saved && prefers)) {
+          document.documentElement.setAttribute('data-theme','dark');
+        }
+      } catch(e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

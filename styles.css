@@ -499,6 +499,10 @@ html, body {
     font-size: 0.98rem !important;
     padding: 0.4rem 0.7rem;
   }
+  /* Center toggle again on mobile */
+  .header-container .flex-spacer:last-of-type { display: block; }
+  .theme-toggle { margin-left: 0.6rem; order: initial; }
+  .hamburger { order: initial; margin-left: 0.5rem; }
 }
 
 @media (max-width: 600px) {
