@@ -10,9 +10,10 @@
       try {
         var key='theme';
         var saved=localStorage.getItem(key);
-        var prefers = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (saved==='dark' || (!saved && prefers)) {
+        if (saved==='dark') {
           document.documentElement.setAttribute('data-theme','dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
         }
       } catch(e) {}
     })();
@@ -291,8 +292,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const saved = localStorage.getItem(storageKey);
       if (saved) {
         apply(saved);
-      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        apply('dark');
+      } else {
+        apply('light');
       }
     } catch(e) {}
 
@@ -302,14 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
       try { localStorage.setItem(storageKey, nowDark ? 'dark' : 'light'); } catch(e) {}
     });
 
-    // Keep in sync with OS changes if user hasn't manually chosen
-    if (window.matchMedia) {
-      const mq = window.matchMedia('(prefers-color-scheme: dark)');
-      mq.addEventListener?.('change', (e) => {
-        const saved = localStorage.getItem(storageKey);
-        if (!saved) apply(e.matches ? 'dark' : 'light');
-      });
-    }
+    // Ignore OS changes; user controls theme explicitly via toggle
   })();
   // === HEADER FUNCTIONALITY ===
   const hamburger = document.getElementById('hamburger');
