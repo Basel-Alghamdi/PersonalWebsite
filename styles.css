@@ -2482,7 +2482,15 @@ html, body {
 .footer-icon[aria-label="Email"] svg {
   fill: none !important;
   stroke: var(--nav-active) !important;
-} 
+  width: 32px; /* slightly larger */
+  height: 32px;
+}
+/* Slightly bolder lines than default, but lighter than last pass */
+.footer-icon[aria-label="Email"] svg path { stroke-width: 1.9 !important; }
+@media (min-width: 701px) {
+  .footer-icon[aria-label="Email"] svg { width: 34px; height: 34px; }
+  .footer-icon[aria-label="Email"] svg path { stroke-width: 2.1 !important; }
+}
 
 /* Anchor for About section to control scroll position */
 #about-anchor {
