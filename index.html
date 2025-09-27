@@ -73,6 +73,17 @@
       <a href="#Experience" class="nav-link">Experience</a>
         <a href="#Volunteering" class="nav-link">Volunteering</a>
     </nav>
+      
+      <!-- Theme toggle: light/dark -->
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle theme">
+        <svg class="icon sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path d="M12 4.5V2m0 20v-2.5M4.5 12H2m20 0h-2.5M5.6 5.6 4 4m16 16-1.6-1.6M18.4 5.6 20 4M4 20l1.6-1.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="4" fill="currentColor"/>
+        </svg>
+        <svg class="icon moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path d="M21 12.6A8.5 8.5 0 1 1 11.4 3 6.8 6.8 0 0 0 21 12.6Z" fill="currentColor"/>
+        </svg>
+      </button>
       <div class="flex-spacer"></div>
     <button class="hamburger" id="hamburger" aria-label="Open navigation">
       <span></span><span></span><span></span>
@@ -249,6 +260,44 @@
 <script>
 // COMPLETE WEBSITE FUNCTIONALITY
 document.addEventListener('DOMContentLoaded', function() {
+  // === THEME: light/dark ===
+  (function() {
+    const root = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    const storageKey = 'theme';
+    const apply = (theme) => {
+      if (theme === 'dark') {
+        root.setAttribute('data-theme', 'dark');
+        btn && btn.setAttribute('aria-pressed', 'true');
+      } else {
+        root.removeAttribute('data-theme');
+        btn && btn.setAttribute('aria-pressed', 'false');
+      }
+    };
+    try {
+      const saved = localStorage.getItem(storageKey);
+      if (saved) {
+        apply(saved);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        apply('dark');
+      }
+    } catch(e) {}
+
+    btn && btn.addEventListener('click', function() {
+      const nowDark = !document.documentElement.hasAttribute('data-theme');
+      apply(nowDark ? 'dark' : 'light');
+      try { localStorage.setItem(storageKey, nowDark ? 'dark' : 'light'); } catch(e) {}
+    });
+
+    // Keep in sync with OS changes if user hasn't manually chosen
+    if (window.matchMedia) {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      mq.addEventListener?.('change', (e) => {
+        const saved = localStorage.getItem(storageKey);
+        if (!saved) apply(e.matches ? 'dark' : 'light');
+      });
+    }
+  })();
   // === HEADER FUNCTIONALITY ===
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('nav-menu');

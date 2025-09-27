@@ -57,6 +57,67 @@ body, * {
                   linear-gradient(180deg, #f7f8fb 0%, #f4f5fa 100%);
 }
 
+/* Dark theme variables */
+:root[data-theme="dark"] {
+  --primary-color: #E6E6F2;
+  --nav-active: #CDB8FF;
+  --nav-inactive: #9aa0b8;
+  --bg-main: #0f1125; /* used by mobile footer background */
+  --glass-tint: rgba(18, 16, 39, 0.55);
+  --glass-tint-strong: rgba(18, 16, 39, 0.68);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --glass-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.25);
+  --bg-gradient: radial-gradient(1200px 600px at 20% -10%, rgba(123, 47, 247, 0.16), transparent 45%),
+                  radial-gradient(1000px 500px at 110% 0%, rgba(166, 119, 255, 0.14), transparent 50%),
+                  linear-gradient(180deg, #101224 0%, #161836 100%);
+}
+
+/* Noise overlay softer in dark */
+:root[data-theme="dark"] body::before {
+  opacity: 0.08;
+  background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1.2px);
+}
+
+/* Minor tweaks for dark readability */
+:root[data-theme="dark"] .nav-link { color: var(--nav-inactive); }
+:root[data-theme="dark"] .nav-link.active { color: #0d0e16 !important; }
+:root[data-theme="dark"] .timeline::before { background: var(--accent-gradient); }
+:root[data-theme="dark"] .footer-bar { color: var(--primary-color); }
+
+/* Theme toggle */
+.theme-toggle {
+  appearance: none;
+  border: 0;
+  background: linear-gradient(white, white) padding-box, var(--accent-gradient) border-box;
+  border: 2px solid transparent;
+  width: 44px; height: 30px;
+  border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-right: .6rem;
+  cursor: pointer;
+  color: var(--nav-active);
+  box-shadow: 0 6px 18px rgba(123,47,247,0.12);
+}
+.theme-toggle .icon { position: absolute; transition: opacity .18s ease, transform .18s ease; }
+.theme-toggle .sun { opacity: 1; transform: translateY(0); }
+.theme-toggle .moon { opacity: 0; transform: translateY(6px); }
+
+:root[data-theme="dark"] .theme-toggle { color: #ffe082; }
+:root[data-theme="dark"] .theme-toggle .sun { opacity: 0; transform: translateY(-6px); }
+:root[data-theme="dark"] .theme-toggle .moon { opacity: 1; transform: translateY(0); }
+
+/* Place toggle at top-right on large screens */
+@media (min-width: 901px) {
+  .theme-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 0;
+    z-index: 1200;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   font-family: 'Lora', 'Segoe UI', Arial, sans-serif;
@@ -284,6 +345,7 @@ html, body {
   display: flex;
   align-items: center;
   width: 100%;
+  position: relative; /* allow absolute positioning of theme toggle */
 }
 
 .logo {
