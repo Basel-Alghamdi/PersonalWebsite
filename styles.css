@@ -2504,3 +2504,24 @@ html, body {
 } 
 /* Shoelace drawer theming to match site */
 /* (Removed Shoelace drawer styles; using custom overlay now) */
+
+/* === Global Section Spacing & Anchor Offsets === */
+.section { scroll-margin-top: calc(var(--header-height) + 14px); }
+.section + .section { margin-top: clamp(2.4rem, 6vw, 4.8rem); }
+@media (max-width: 700px) {
+  .section + .section { margin-top: clamp(1.6rem, 5vw, 3.2rem); }
+}
+
+/* Fine-tune spacing: reduce gap before Volunteering */
+#Experience + #Volunteering {
+  margin-top: clamp(1.2rem, 3vw, 2.4rem);
+}
+@media (max-width: 700px) {
+  #Experience + #Volunteering { margin-top: clamp(0.8rem, 3.5vw, 1.6rem); }
+}
+
+/* Precise anchor landing for About: stop slightly higher */
+#about { scroll-margin-top: calc(var(--header-height) - 6px) !important; }
+@media (max-width: 700px) {
+  #about { scroll-margin-top: calc(var(--header-height) - 10px) !important; }
+}
