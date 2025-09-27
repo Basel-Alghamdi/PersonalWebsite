@@ -89,7 +89,7 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1; /* keep noise behind all content to avoid darkening images */
   opacity: 0.35;
   background-image:
     radial-gradient(rgba(0,0,0,0.025) 1px, transparent 1.2px);
@@ -99,6 +99,8 @@ body::before {
 /* Prevent fixed footer overlap (no longer needed since footer isn't fixed) */
 @media (max-width: 700px) {
   body { padding-bottom: 0 !important; }
+  /* Soften global noise overlay on small screens */
+  body::before { opacity: 0.18; }
 }
 
 /* === تم استبدال الدوائر العائمة بالنجوم الجميلة === */
