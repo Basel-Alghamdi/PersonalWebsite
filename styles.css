@@ -135,6 +135,8 @@ body {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  /* Hint the browser the background will change with theme */
+  will-change: background;
 }
 
 /* Defer rendering of offscreen sections for faster first paint */

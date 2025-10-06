@@ -11,6 +11,8 @@ export function ThemeProvider({ children }) {
     if (theme === 'dark') root.setAttribute('data-theme', 'dark')
     else root.removeAttribute('data-theme')
     try { localStorage.setItem('theme', theme) } catch {}
+    // Force background repaint so the gradient updates immediately
+    try { document.body.style.background = 'var(--bg-gradient)' } catch {}
   }, [theme])
   const value = useMemo(() => ({ theme, toggle: () => setTheme(t => (t === 'dark' ? 'light' : 'dark')) }), [theme])
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
@@ -19,4 +21,3 @@ export function ThemeProvider({ children }) {
 export function useTheme() {
   return useContext(ThemeContext)
 }
-

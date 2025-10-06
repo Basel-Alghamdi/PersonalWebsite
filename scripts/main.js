@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
         root.removeAttribute('data-theme');
         btn && btn.setAttribute('aria-pressed', 'false');
       }
+      // Force immediate paint of CSS variable-driven background
+      try {
+        document.body.style.background = 'var(--bg-gradient)';
+      } catch (e) {}
     };
     try {
       const saved = localStorage.getItem(storageKey);
